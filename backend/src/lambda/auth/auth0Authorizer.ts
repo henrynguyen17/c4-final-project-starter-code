@@ -82,7 +82,7 @@ function getToken(authHeader: string): string {
   return token
 }
 
-const getSigningKey = async (jwkurl, kid) => {
+const getSigningKey = async (jwkurl: string, kid: string) => {
   let res = await Axios.get(jwkurl, {
     headers: {
       'Content-Type': 'application/json',
@@ -112,7 +112,7 @@ const getSigningKey = async (jwkurl, kid) => {
   return signingKey;
 };
 
-function certToPEM(cert) {
+function certToPEM(cert: string) {
   cert = cert.match(/.{1,64}/g).join('\n');
   cert = `-----BEGIN CERTIFICATE-----\n${cert}\n-----END CERTIFICATE-----\n`;
   return cert;
